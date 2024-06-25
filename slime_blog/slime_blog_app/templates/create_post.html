@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block head %}
+<title>Create Post</title>
+{% endblock %}
+
+{% block body %}
+
+<div class='container'>
+    <h1>Create a New Post</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type='submit' class='btn btn-primary'>Submit</button>
+    </form>
+</div>
+
+{% comment %} Scripting section for ckeditor-5 {% endcomment %}
+<script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#content'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+{% endblock %}
