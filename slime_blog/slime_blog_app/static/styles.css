@@ -1,0 +1,40 @@
+/* CSS styles Slime Blog */
+
+/* Login HTML css */
+
+body {
+    background-color: #e0f7fa;
+    font-family: 'Comic Sans MS', sans-serif;
+}
+
+.container {
+    margin-top: 100px;
+}
+
+.card {
+    border: 2px solid #4caf50;
+}
+
+.card-header {
+    background-color: #4caf50;
+    color: white;
+    text-align: center;
+}
+
+.btn-slime {
+    background-color: #4caf50;
+    color: white;
+}
+
+.btn-slime:hover {
+    background-color: #388e3c;
+}
+
+.slime-logo {
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+}
+
+/* Login HTML css end */
