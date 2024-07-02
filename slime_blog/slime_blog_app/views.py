@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 
 from .models import Post, Comment
-from .forms import PostForm
+from .forms import PostForm, SignUpForm
 
 # Create your views here.
 
@@ -18,7 +19,25 @@ def post_details_view(request, pk):
     return render(request, "post_details.html", {"post": post, "comments": comments})
 
 
-# @login_required
+def register(request):
+    if request.method == "POST":
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            user.refresh_from_db()
+            user.email = form.cleaned_data.get("email")
+            user.save()
+            raw_password = form.cleaned_data.get("password1")
+            user = authenticate(username=user.username, password=raw_password)
+            login(request, user)
+
+            return redirect("homepage")
+    else:
+        form = SignUpForm()
+    return render(request, "registration.html", {"form": form})
+
+
+@login_required
 def create_post(request):
     if request.method == "POST":
         # Handle form submission here
