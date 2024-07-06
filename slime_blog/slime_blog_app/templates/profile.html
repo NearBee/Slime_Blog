@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}Account Information{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1>Account Information for "{{ user.username }}"</h1>
+    <p>Email: {{ user.email }}</p>
+    <!-- Add more user information as needed -->
+</div>
+{% endblock %}
