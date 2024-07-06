@@ -9,11 +9,16 @@ urlpatterns = [
     path("post/<int:pk>/", views.post_details_view, name="post_details"),
     path("post/new/", views.create_post, name="create_post"),
     # TODO: Add /account/ to each when account page is created
-    path("register/", views.register, name="register"),
+    path("account/register/", views.register, name="register"),
+    path("account/profile/<str:username>/", views.profile_view, name="profile"),
     path(
-        "login/",
+        "account/login/",
         auth_views.LoginView.as_view(template_name="login.html"),
         name="login",
     ),
-    path("logout/", auth_views.LogoutView.as_view(next_page="homepage"), name="logout"),
+    path(
+        "account/logout/",
+        auth_views.LogoutView.as_view(next_page="homepage"),
+        name="logout",
+    ),
 ]
