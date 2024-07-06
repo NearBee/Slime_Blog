@@ -1,5 +1,26 @@
 /* CSS styles Slime Blog */
 
+/* Full Layout CSS */
+
+
+.titletext,
+h1,
+.btn {
+    font-family: "Love Ya Like A Sister", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+p {
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    /* font-weight: 300;
+    font-style: normal; */
+}
+
+
+/* END Full Layout CSS */
+
 /* Login HTML CSS */
 
 body {
