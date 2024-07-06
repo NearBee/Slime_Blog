@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 from .models import Post, Comment
 from .forms import PostForm, SignUpForm
@@ -37,7 +38,7 @@ def register(request):
     return render(request, "registration.html", {"form": form})
 
 
-@login_required
+# @login_required
 def create_post(request):
     if request.method == "POST":
         # Handle form submission here
@@ -52,3 +53,12 @@ def create_post(request):
     else:
         form = PostForm()
         return render(request, "create_post.html", {"form": form})
+
+
+# @login_required
+def profile_view(request, username):
+    user = get_object_or_404(User, username=username)
+    context = {
+        "user": user,
+    }
+    return render(request, "profile.html", context)
