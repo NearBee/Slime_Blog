@@ -67,9 +67,9 @@
 
                 <!-- WIP Login/Logout buttons -->
                 {% if user.is_authenticated %}
-                <button class="btn btn-danger ms-2" type="button" href="/home/">Logout</button>
+                <a class="btn btn-danger ms-2" type="button" href="/home/">Logout</a>
                 {% else %}
-                <button href="#">Login</button>
+                <a class="btn btn-success ms-2" type="button" href="/account/login/">Login</a>
                 {% endif %}
 
 
