@@ -5,6 +5,8 @@
 
 .titletext,
 h1,
+h2,
+h3,
 .btn {
     font-family: "Love Ya Like A Sister", cursive;
     font-weight: 400;
@@ -25,7 +27,6 @@ p {
 
 body {
     background-color: #e0f7fa;
-    font-family: 'Comic Sans MS', sans-serif;
 }
 
 .container {
