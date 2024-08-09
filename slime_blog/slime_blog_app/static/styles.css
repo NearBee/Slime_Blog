@@ -52,6 +52,15 @@ body {
     background-color: #388e3c;
 }
 
+.btn-slime-variant {
+    background-color: #62C5DA;
+    color: white;
+}
+
+.btn-slime-variant:hover {
+    background-color: #40A7BD;
+}
+
 .slime-logo {
     display: block;
     margin: 0 auto;
