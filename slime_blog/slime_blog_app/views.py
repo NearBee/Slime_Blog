@@ -4,23 +4,23 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
 from .models import Post, Comment
-from .forms import PostForm, SignUpForm
+from .forms import PostForm, SignUpForm, SignInForm
 
 # Create your views here.
 
 
-def homepage_view(request):
+def Homepage_view(request):
     posts = Post.objects.all()
     return render(request, "homepage.html", {"posts": posts})
 
 
-def post_details_view(request, pk):
+def Post_details_view(request, pk):
     post = get_object_or_404(Post, pk=pk)
     comments = Comment.objects.filter(post=post)
     return render(request, "post_details.html", {"post": post, "comments": comments})
 
 
-def register(request):
+def Register(request):
     if request.method == "POST":
         form = SignUpForm(request.POST)
         if form.is_valid():
@@ -38,8 +38,22 @@ def register(request):
     return render(request, "registration.html", {"form": form})
 
 
+def Login(request):
+    if request.method == "POST":
+        form = SignInForm(request.POST)
+        if form.is_valid():
+            user = form.cleaned_data.get("username")
+            login(request, user)
+
+            return redirect("profile.html")
+    else:
+        form = SignInForm()
+
+    return render(request, "signin.html", {"form": form})
+
+
 # @login_required
-def create_post(request):
+def Create_post(request):
     if request.method == "POST":
         # Handle form submission here
         form = PostForm(request.POST)
@@ -56,7 +70,7 @@ def create_post(request):
 
 
 # @login_required
-def profile_view(request, username):
+def Profile_view(request, username):
     user = get_object_or_404(User, username=username)
     context = {
         "user": user,
