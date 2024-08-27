@@ -5,12 +5,12 @@ from . import views
 
 urlpatterns = [
     path("", RedirectView.as_view(url="home/", permanent=False)),
-    path("home/", views.homepage_view, name="homepage"),
-    path("post/<int:pk>/", views.post_details_view, name="post_details"),
-    path("post/new/", views.create_post, name="create_post"),
+    path("home/", views.Homepage_view, name="homepage"),
+    path("post/<int:pk>/", views.Post_details_view, name="post_details"),
+    path("post/new/", views.Create_post, name="create_post"),
     # TODO: Add /account/ to each when account page is created
-    path("account/register/", views.register, name="register"),
-    path("account/profile/<str:username>/", views.profile_view, name="profile"),
+    path("account/register/", views.Register, name="register"),
+    path("account/profile/<str:username>/", views.Profile_view, name="profile"),
     path(
         "account/login/",
         auth_views.LoginView.as_view(template_name="login.html"),
