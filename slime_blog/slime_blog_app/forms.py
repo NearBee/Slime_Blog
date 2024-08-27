@@ -17,6 +17,14 @@ class SignUpForm(UserCreationForm):
         fields = ("username", "email", "password1", "password2")
 
 
+class SignInForm(forms.ModelForm):
+    class Meta:
+        model = User
+        # TODO: Switch from "username" to "email"
+        fields = ("username", "password")
+        # fields = ("email", "password")
+
+
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
