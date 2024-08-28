@@ -8,7 +8,6 @@ urlpatterns = [
     path("home/", views.Homepage_view, name="homepage"),
     path("post/<int:pk>/", views.Post_details_view, name="post_details"),
     path("post/new/", views.Create_post, name="create_post"),
-    # TODO: Add /account/ to each when account page is created
     path("account/register/", views.Register, name="register"),
     path("account/profile/<str:username>/", views.Profile_view, name="profile"),
     path(
