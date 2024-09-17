@@ -15,10 +15,21 @@
                 <div class="card-body">
                     <form method="post" action="{% url 'register' %}">
                         {% csrf_token %}
-                        {{ form.as_p }}
-                        <button type="submit" class="btn btn-slime btn-block mt-3">Register</button>
+
+                        {% for field in SignUpForm %}
+                        <div class="fieldWrapper">
+                            {{field.errors}}
+                            <div class="row justify-content-start">
+
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                        <!-- {{ form.as_p }}
+                        <button type="submit" class="btn btn-slime btn-block mt-3">Register</button> -->
                     </form>
                 </div>
+                <!-- TODO: Fix link to login.html -->
                 <a href="{% url 'login' %}" class="btn btn-link mt-3">Already have an account?</a>
             </div>
         </div>
