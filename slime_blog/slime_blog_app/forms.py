@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from .models import Post
 
 
-class SignUpForm(UserCreationForm):
+class registration_form(UserCreationForm):
     email = forms.EmailField(
         max_length=254,
         required=True,
@@ -17,7 +17,7 @@ class SignUpForm(UserCreationForm):
         fields = ("username", "email", "password1", "password2")
 
 
-class SignInForm(forms.ModelForm):
+class login_form(forms.ModelForm):
     class Meta:
         model = User
         # TODO: Switch from "username" to "email"

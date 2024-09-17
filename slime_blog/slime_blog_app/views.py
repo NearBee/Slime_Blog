@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
 from .models import Post, Comment
-from .forms import PostForm, SignUpForm, SignInForm
+from .forms import PostForm, registration_form, login_form
 
 # Create your views here.
 
@@ -22,7 +22,7 @@ def Post_details_view(request, pk):
 
 def Register(request):
     if request.method == "POST":
-        form = SignUpForm(request.POST)
+        form = registration_form(request.POST)
         if form.is_valid():
             user = form.save()
             user.refresh_from_db()
@@ -34,20 +34,20 @@ def Register(request):
 
             return redirect("homepage")
     else:
-        form = SignUpForm()
-    return render(request, "registration.html", {"form": form})
+        form = registration_form()
+    return render(request, "registration.html", {"registration_form": form})
 
 
 def Login(request):
     if request.method == "POST":
-        form = SignInForm(request.POST)
+        form = login_form(request.POST)
         if form.is_valid():
             user = form.cleaned_data.get("username")
             login(request, user)
 
             return redirect("profile.html")
     else:
-        form = SignInForm()
+        form = login_form()
 
     return render(request, "signin.html", {"form": form})
 
