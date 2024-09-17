@@ -10,7 +10,6 @@ class RegistrationForm(UserCreationForm):
         max_length=254,
         required=True,
         help_text="Required. Enter a valid email address.",
-        widget=forms.EmailInput(attrs={"class": "form-control"}),
     )
 
     class Meta:
@@ -20,7 +19,8 @@ class RegistrationForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
-            field.widget.attrs["class"] = "form-control"
+            if not isinstance(field.widget, forms.CheckboxInput):
+                field.widget.attrs["class"] = "form-control"
 
 
 class LoginForm(forms.ModelForm):
